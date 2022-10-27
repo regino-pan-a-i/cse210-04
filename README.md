@@ -24,44 +24,68 @@ The program must have at least eight classes.
 Each module, class and method must have a corresponding comment.
 The game must remain generally true to the order of play described earlier.
 
-Actor*,Artifact,Color*,Point*,Cast*,Director,KeyboardService*,VideoService*(from the prep stuff)
 
-class1:
-    -responsibility:
+class1: Actor
+    -responsibility: create a thing to participate in the game
     -attributes:
     -Methods:
 
-class2:
-    -responsibility:
+class2: Color
+    -responsibility: store color values
     -attributes:
     -Methods:
 
-class3:
-    -responsibility:
+class3: Point
+    -responsibility: store location of a thing
     -attributes:
     -Methods:
 
-class4:
-    -responsibility:
+class4: Cast
+    -responsibility: store the actors in the game(player,falling object)
     -attributes:
     -Methods:
 
-class5:
-    -responsibility:
+class5: KeyboardService
+    -responsibility: take in info from user
     -attributes:
     -Methods:
 
-class6:
-    -responsibility:
+class6: VideoService
+    -responsibility: work in outputs to print messages
     -attributes:
     -Methods:
 
-class7:
-    -responsibility:
-    -attributes:
-    -Methods:
+class7: Director-- Emma/Andre
+    -responsibility: Direct traffic
+    -attributes: overall score
+    -Methods: GetInputs: -- Dillon
+                -right/left
+              DoUpdates: -- Andre/Emma
+                -create rock/gem 
+                    -random position on screen
+                    -set point value
+                    -set color
+                    -
+                -WhatsHit(is player in rock/gem)
+                    -(determine if object is hit) if true call on Update score
+                    -return point value
+                -Update position
+                -update score
+                    -call on player method passing ture/false
+                -get rid of object
+              DoOutputs-- Nathan
+                - display actors
+                - display score
+                - display multiplier
 
-class8:
-    -responsibility:
-    -attributes:
-    -Methods:
+class8: FallingObject, child to actor -- Justin
+    -responsibility: falls, has point value, has symbol
+    -attributes: point values for R & G, symbols
+    -Methods: int GetPoints(); void SetPoints();
+
+Class9: ScoreTracker -- Madison
+    -responsibilty: track score, track multiplier, update the score
+    -attributes: score, multiplier
+    -methods: int GetScore, int GetMultiplier, int UpdateScore(score, multiplier), int UpdateMultiplier
+
+!!dotnet add package raylib-cs!!
