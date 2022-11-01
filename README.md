@@ -24,37 +24,6 @@ The program must have at least eight classes.
 Each module, class and method must have a corresponding comment.
 The game must remain generally true to the order of play described earlier.
 
-
-class1: Actor
-    -responsibility: create a thing to participate in the game
-    -attributes:
-    -Methods:
-
-class2: Color
-    -responsibility: store color values
-    -attributes:
-    -Methods:
-
-class3: Point
-    -responsibility: store location of a thing
-    -attributes:
-    -Methods:
-
-class4: Cast
-    -responsibility: store the actors in the game(player,falling object)
-    -attributes:
-    -Methods:
-
-class5: KeyboardService
-    -responsibility: take in info from user
-    -attributes:
-    -Methods:
-
-class6: VideoService
-    -responsibility: work in outputs to print messages
-    -attributes:
-    -Methods:
-
 class7: Director-- Emma/Andre
     -responsibility: Direct traffic
     -attributes: overall score
