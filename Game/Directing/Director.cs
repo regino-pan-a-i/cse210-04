@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Unit04.Game.Casting;
-using Unit04.Game.Services;
+using cse210_04.Game.Casting;
+using cse210_04.Game.Services;
 
 
-namespace Unit04.Game.Directing
+namespace cse210_04.Game.Directing
 {
     /// <summary>
     /// <para>A person who directs the game.</para>
@@ -44,45 +44,52 @@ namespace Unit04.Game.Directing
         }
 
         /// <summary>
-        /// Gets directional input from the keyboard and applies it to the robot.
+        /// Gets directional input from the keyboard and applies it to the minecart.
         /// </summary>
         /// <param name="cast">The given cast.</param>
         private void GetInputs(Cast cast) // Dillon's job
         {
-            Actor robot = cast.GetFirstActor("robot");
+            Actor minecart = cast.GetFirstActor("minecart");
             foreach(Actor actor in Fallingobjects){
                 Point setActorVel = _keyboardService.MoveArtifact();
             }
 
 
             Point velocity = _keyboardService.GetDirection();
-            robot.SetVelocity(velocity);     
+            minecart.SetVelocity(velocity);     
         }
 
         /// <summary>
-        /// Updates the robot's position and resolves any collisions with artifacts.
+        /// Updates the minecart's position and resolves any collisions with artifacts.
         /// </summary>
         /// <param name="cast">The given cast.</param>
         private void DoUpdates(Cast cast) // Emma and Andre
         {
-            Actor banner = cast.GetFirstActor("banner");
-            Actor robot = cast.GetFirstActor("robot");
+            
+            ScoreTracker scoretracker = (ScoreTracker)cast.GetFirstActor("banner");
+            Actor scoreBanner = cast.GetFirstActor("banner");
+            Actor multiplierBanner = cast.GetFirstActor("banner");
+
+            Actor minecart = cast.GetFirstActor("minecart");
             List<Actor> artifacts = cast.GetActors("artifacts");
 
             banner.SetText("");
             int maxX = _videoService.GetWidth();
             int maxY = _videoService.GetHeight();
-            robot.MoveNext(maxX, maxY);
+            minecart.MoveNext(maxX, maxY);
 
             foreach (Actor actor in artifacts)
             {
-                if (robot.GetPosition().Equals(actor.GetPosition()))
+                if (minecart.GetPosition().Equals(actor.GetPosition()))
                 {
                     /// If player is in object position then 
                     /// call on Score Tracker UpdateScore()
-                    Artifact artifact = (Artifact) actor;
-                    string message = artifact.GetMessage();
-                    banner.SetText(message);
+                    scoretracker.UpdateMultiplier();
+                    scoretracker.UpdateScore();
+                    string multiplierMessage = $"Multiplier: {scoretracker.GetMultiplier()}x";
+                    banner.SetText(multiplerMessage);
+                    string scoreMessage = $"Score: {scoretracker.GetScore()}";
+                    banner.SetText(scoreMessage);
 
                 }
             } 

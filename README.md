@@ -1,28 +1,44 @@
 # cse210-04: Greed
 
-"I anticipate... some problems." - Bro. Manley
-"Thank you, Robot finds kitten. You have changed my life."
-"Me likey SDL2. It's worthy."
-Goal of the class is to learn how to make code that is easy to maintain
-3 inheritance links max
-Favor composition over inheritance!!
-
 Greed is played according to the following rules:
 
-Gems (*) and rocks (o) randomly appear and fall from the top of the screen.
-The player (#) can move left or right along the bottom of the screen.
-If the player touches a gem they earn a point.
-If the player touches a rock they lose a point.
-Gems and rocks are removed when the player touches them.
-The game continues until the player closes the window.
+- Gems (*) and rocks (o) randomly appear and fall from the top of the screen.
+- The player (#) can move left or right along the bottom of the screen.
+- If the player touches a gem they earn a point.
+- If the player touches a rock they lose a point.
+- Gems and rocks are removed when the player touches them.
+- The game continues until the player closes the window.
 
+# Getting Started:
+Make sure you have dotnet 6.0 or newer installed on your machine. Open a terminal and browse to the project's root folder. Start the program by running the following commands:
 
-Your program must also meet the following requirements:
+dotnet add package raylib-cs
+dotnet build 
+dotnet run
 
-The program must have a README file.
-The program must have at least eight classes.
-Each module, class and method must have a corresponding comment.
-The game must remain generally true to the order of play described earlier.
+# Project Structure:
+The project files and folders are organized as follows:
+* Directing
+    - Director
+* Services
+    - KeyboardServices
+    - videoService
+* Casting
+    - Actor(stores info and methods about a actor in the game)
+    - Cast(stores all of the actors made throughout the game)
+    - Color(stores colors for the rest of the game)
+    - FallingObject(methods for the gem/rock/multiplier falling)
+    - Point(tracks the location of a thing)
+    - ScoreTracker(child of actor, works with the score)
+    - ObjectFactory
+
+# Authors:
+* Dillon Leone
+* Andre Regino
+* Emma Quackenbush
+* Nathan Marble
+* Justin Paystrup
+* Madison Brown
 
 class7: Director-- Emma/Andre
     -responsibility: Direct traffic
@@ -46,15 +62,3 @@ class7: Director-- Emma/Andre
                 - display actors
                 - display score
                 - display multiplier
-
-class8: FallingObject, child to actor -- Justin
-    -responsibility: falls, has point value, has symbol
-    -attributes: point values for R & G, symbols
-    -Methods: int GetPoints(); void SetPoints();
-
-Class9: ScoreTracker -- Madison
-    -responsibilty: track score, track multiplier, update the score
-    -attributes: score, multiplier
-    -methods: int GetScore, int GetMultiplier, int UpdateScore(score, multiplier), int UpdateMultiplier
-
-!!dotnet add package raylib-cs!!

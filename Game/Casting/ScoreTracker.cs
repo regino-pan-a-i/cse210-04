@@ -1,10 +1,10 @@
 // Class9: ScoreTracker -- Madison
 //     -responsibilty: track score, track multiplier, update the score
 //     -attributes: score, multiplier
-//     -methods: int GetScore, int GetMultiplier, int UpdateScore(score), int UpdateMultiplier
+//     -methods: int GetScore, int GetMultiplier, int UpdateScore(score), int UpdateMultiplier, UpdateBanner
 
-namespace Unit04.Game.Casting;
-public class ScoreTracker
+namespace cse210_04.Game.Casting;
+public class ScoreTracker : Actor
 {
     // Initializing Score and Multiplier Variables
     private int Score = 0;
@@ -14,7 +14,7 @@ public class ScoreTracker
     // Responsiblity: Getter for the current score
     // Parameters: None
     // Returns: Score
-    private int GetScore()
+    public int GetScore()
     {
         return Score;
     }
@@ -22,7 +22,7 @@ public class ScoreTracker
     // Responsiblity: Getter for the current multiplier
     // Parameters: None
     // Returns: Multiplier
-    private int GetMultiplier()
+    public int GetMultiplier()
     {
         return Multiplier;
     }
@@ -30,7 +30,7 @@ public class ScoreTracker
     // Responsibility: Determines the new score based on the hit item's point value and the current multiplier.
     // Parameters: ItemScore: point value of the hit item
     // Returns: None
-    private void UpdateScore(int ItemScore)
+    public void UpdateScore(int ItemScore)
     {
         Score += (ItemScore * Multiplier);
     }
@@ -38,7 +38,7 @@ public class ScoreTracker
     // Responsibility: Determines the new multiplier based on the hit item's multiplier value.
     // Parameters: ItemMultiplier: point value of the hit item
     // Returns: None
-    private void UpdateMultiplier(int ItemMultiplier)
+    public void UpdateMultiplier(int ItemMultiplier)
     {
         if (ItemMultiplier == -1)
         {
@@ -49,4 +49,5 @@ public class ScoreTracker
             Multiplier += ItemMultiplier;
         }
     }
+
 }
