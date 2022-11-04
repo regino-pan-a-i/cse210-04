@@ -22,7 +22,6 @@ namespace cse210_04
         private static int COLS = 60;
         private static int ROWS = 40;
         private static string CAPTION = "Greed";
-        private static string DATA_PATH = "Data/messages.txt";
         private static Color WHITE = new Color(255, 255, 255);
         
         /// <summary>
@@ -47,7 +46,7 @@ namespace cse210_04
             scoreBanner.SetText("");
             scoreBanner.SetFontSize(FONT_SIZE);
             scoreBanner.SetColor(WHITE);
-            scoreBanner.SetPosition(new Point(MAX_X - CELL_SIZE,0));
+            scoreBanner.SetPosition(new Point(CELL_SIZE,0));
             cast.AddActor("score banner", scoreBanner);
 
             // create the multiplier banner
@@ -55,7 +54,7 @@ namespace cse210_04
             multiplierBanner.SetText("");
             multiplierBanner.SetFontSize(FONT_SIZE);
             multiplierBanner.SetColor(WHITE);
-            multiplierBanner.SetPosition(new Point(CELL_SIZE, 0));
+            multiplierBanner.SetPosition(new Point(MAX_X - CELL_SIZE, 0));
             cast.AddActor("multiplier banner", multiplierBanner);
 
             // create the minecart
@@ -65,11 +64,6 @@ namespace cse210_04
             minecart.SetColor(WHITE);
             minecart.SetPosition(new Point(MAX_X / 2, MAX_Y / 2));
             cast.AddActor("minecart", minecart); // <-- WHAT NAME ARE WE GIVING IT?
-
-            // load the messages
-            List<string> messages = File.ReadAllLines(DATA_PATH).ToList<string>(); // <-- SET BANNER PER OBJECT
-
-         
 
             // start the game
             KeyboardService keyboardService = new KeyboardService(CELL_SIZE);
