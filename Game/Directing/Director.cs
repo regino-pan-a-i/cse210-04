@@ -15,16 +15,22 @@ namespace cse210_04.Game.Directing
     {
         private KeyboardService _keyboardService = null;
         private VideoService _videoService = null;
+        private ObjectFactory _objectFactory = null;
+
+        private static int COLS = 60;
+
+
 
         /// <summary>
-        /// Constructs a new instance of Director using the given KeyboardService and VideoService.
+        /// Constructs a new instance of Director using the given KeyboardService, VideoService, and ObjectFactory
         /// </summary>
         /// <param name="keyboardService">The given KeyboardService.</param>
         /// <param name="videoService">The given VideoService.</param>
-        public Director(KeyboardService keyboardService, VideoService videoService)
+        public Director(KeyboardService keyboardService, VideoService videoService, ObjectFactory objectFactory)
         {
             this._keyboardService = keyboardService;
             this._videoService = videoService;
+            this._objectFactory = objectFactory;
         }
 
         /// <summary>
@@ -65,7 +71,7 @@ namespace cse210_04.Game.Directing
         /// <param name="cast">The given cast.</param>
         private void DoUpdates(Cast cast) // Emma and Andre
         {
-            
+            spawn_falling_objects();
             ScoreTracker scoretracker = (ScoreTracker)cast.GetFirstActor("banner");
             Actor scoreBanner = cast.GetFirstActor("banner");
             Actor multiplierBanner = cast.GetFirstActor("banner");
@@ -108,6 +114,28 @@ namespace cse210_04.Game.Directing
             _videoService.DrawActors(actors);
             _videoService.FlushBuffer();
         }
+
+        private void spawn_falling_objects()
+        {
+            List<int> xList = new List<int>();
+            for(int i = 0; i < 3; i++)
+            {
+                int x = random.Next(1, COLS);
+                // if x is not in xList
+                {
+                    int y = _videoService.GetHeight;
+                    Point position = new Point(x, y);
+                    position = position.Scale(_videoService.GetCellSize);
+                    int objectType = random.Next(1, 10);
+                    _objectFactory.defineobject(objectType);
+                    xList.Add(x);
+                }
+
+                
+            }
+
+        }
+
 
     }
 }
