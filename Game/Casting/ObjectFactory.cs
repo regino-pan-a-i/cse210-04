@@ -1,30 +1,57 @@
-
+using cse210_04.Game;
     // create the falling objects
-        private void createfallingobjects{
-                for (int i = 0; i < DEFAULT_FALLING_OBJECTS; i++)
-                {
-                    string text = (
-                    @" __
-                    /||\
-                    \||/
-                     \/").ToString(); // <-- WHAT IS GOING TO BE THE SHAPE OF THE OBJECTS
-                    string message = messages[i]; // <-- BASED ON THE MULTIPLIER : make sure it matches correctly
+    public class ObjectFactory{
+        
+        private string image;
+        private int score;
+        int muliplier;
+        int fallingspeed;
+        Color color;
+        public void defineobject(int type){
+            switch(type)
+            {
+            case 1:
+                // rock
+                int r = 228;
+                int g = 166;
+                int b = 24;
+                Color color = new Color(r, g, b);
+ 
+            break
+            
+            case 2 :
+                // gem 
+                // STANDARIZE OBJECT CHAR LENGTH TO EITHER 3 OR 5 CHARACTERS PLS
+                // DIVIDE FONT SIZE (in Program class) BY THAT AMOUNT
+                string text =(
+                @" __
+                /||\
+                \||/
+                    \/").ToString(); // <-- WHAT IS GOING TO BE THE SHAPE OF THE OBJECTS
 
-                    int x = random.Next(1, COLS);
-                    int y = random.Next(1, ROWS);
-                    Point position = new Point(x, y);
-                    position = position.Scale(CELL_SIZE);
+                int r = 68;
+                int g = 197;
+                int b = 236;
+                Color color = new Color(r, g, b);
 
-                    int r = random.Next(0, 256);
-                    int g = random.Next(0, 256);
-                    int b = random.Next(0, 256);
-                    Color color = new Color(r, g, b);
+            break
+            
+            case 3 :
+            multiplier gem
+            break
+            }
+            
+            createobject ();
+        }
+        private void createobject()
+        {
 
-                    Artifact artifact = new Artifact(); // <-- INSTANCE OF FALLING OBJECT
-                    artifact.SetText(text); // <-- DEPENDING ON THE OBJECT
-                    artifact.SetFontSize(FONT_SIZE);
-                    artifact.SetColor(color);
-                    artifact.SetPosition(position);
-                    artifact.SetMessage(message); // <-- DEPENDING ON THE OBJECT
-                    cast.AddActor("artifacts", artifact);
-                }
+                FallingObject fallingObject = new FallingObject(); // <-- INSTANCE OF FALLING OBJECT
+                fallingObject.SetText(text); // <-- DEPENDING ON THE OBJECT
+                fallingObject.SetFontSize(FONT_SIZE);
+                fallingObject.SetColor(color);
+                fallingObject.SetPosition(position);
+                cast.AddActor("fallingObjects", fallingObject);
+            }
+        }
+    
