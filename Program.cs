@@ -63,7 +63,7 @@ namespace cse210_04
             minecart.SetText("|__|"); // <-- SHAPE OF THE MAIN CHARACTER
             minecart.SetFontSize(FONT_SIZE);
             minecart.SetColor(WHITE);
-            minecart.SetPosition(new Point(MAX_X / 2, MAX_Y / 2));
+            minecart.SetPosition(new Point(MAX_X / 2, MAX_Y-10));
             cast.AddActor("minecart", minecart); // <-- WHAT NAME ARE WE GIVING IT?
 
             // start the game
