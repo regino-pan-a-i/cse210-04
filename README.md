@@ -28,9 +28,9 @@ The project files and folders are organized as follows:
     - Cast(stores all of the actors made throughout the game)
     - Color(stores colors for the rest of the game)
     - FallingObject(methods for the gem/rock/multiplier falling)
+    - ObjectFactory(creator of falling objects)
     - Point(tracks the location of a thing)
     - ScoreTracker(child of actor, works with the score)
-    - ObjectFactory
 
 # Authors:
 * Dillon Leone
@@ -40,25 +40,3 @@ The project files and folders are organized as follows:
 * Justin Paystrup
 * Madison Brown
 
-class7: Director-- Emma/Andre
-    -responsibility: Direct traffic
-    -attributes: overall score
-    -Methods: GetInputs: -- Dillon
-                -right/left
-              DoUpdates: -- Andre/Emma
-                -create rock/gem 
-                    -random position on screen
-                    -set point value
-                    -set color
-                    -
-                -WhatsHit(is player in rock/gem)
-                    -(determine if object is hit) if true call on Update score
-                    -return point value
-                -Update position
-                -update score
-                    -call on player method passing ture/false
-                -get rid of object
-              DoOutputs-- Nathan
-                - display actors
-                - display score
-                - display multiplier
