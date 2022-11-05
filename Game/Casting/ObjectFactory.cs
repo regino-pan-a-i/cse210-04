@@ -1,6 +1,5 @@
 using System;
 namespace cse210_04.Game.Casting;
-{
     // create the falling objects
     public class ObjectFactory
     {
@@ -33,7 +32,7 @@ namespace cse210_04.Game.Casting;
         \__/
             \/").ToString(); // the multiplier gem shape
 
-        public void defineobject(int type, Point Position)
+        public void defineobject(int type, Point Position, Cast cast)
         {
             position = Position;
             switch(type)
@@ -169,9 +168,9 @@ namespace cse210_04.Game.Casting;
             break;
             }
             
-            createobject ();
+            createobject(cast);
         }
-        private void createobject()
+        private void createobject(Cast cast)
         {
                 int FONT_SIZE = 3;
 
@@ -187,5 +186,5 @@ namespace cse210_04.Game.Casting;
                 cast.AddActor("fallingObjects", fallingObject);
         }
     }       
-}
+
     
