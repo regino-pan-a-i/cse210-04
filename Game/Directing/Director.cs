@@ -14,6 +14,7 @@ namespace cse210_04.Game.Directing
     {
         private KeyboardService _keyboardService = null;
         private VideoService _videoService = null;
+        private ObjectFactory objectFactory = new ObjectFactory();
 
         private static int COLS = 60;
 
@@ -28,7 +29,6 @@ namespace cse210_04.Game.Directing
         {
             this._keyboardService = keyboardService;
             this._videoService = videoService;
-            ObjectFactory _objectFactory = new ObjectFactory();
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace cse210_04.Game.Directing
                     position = position.Scale(_videoService.GetCellSize());
                 // no access to the random library
                     int objectType = Random.Next(1, 10);
-                    _objectFactory.defineobject(objectType,position);
+                    objectFactory.defineobject(objectType,position);
                     xList.Add(x);
                 }
             }  
