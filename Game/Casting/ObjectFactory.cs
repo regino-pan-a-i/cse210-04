@@ -1,20 +1,12 @@
-using System;
-namespace cse210_04.Game.Casting;
-{
+using cse210_04.Game;
     // create the falling objects
-    public class ObjectFactory
-    {
+    public class ObjectFactory{
         
-        private Point position;
         private string image;
         private int score;
-        private int multiplier;
-        private Point fallingspeed;
-        private int r;
-        private int g;
-        private int b;
-        private int FONT_SIZE = 3;
-        Color color = new Color(0,0,0);
+        int multiplier;
+        int fallingspeed;
+        Color color;
         private string gemShape = (
                 @" __
                 /||\
@@ -29,37 +21,36 @@ namespace cse210_04.Game.Casting;
            
         private string multiplierGemShape = (
             @"    /\
-        /__\
-        \__/
-            \/").ToString(); // the multiplier gem shape
+   /__\
+   \__/
+    \/").ToString(); // the multiplier gem shape
 
-        public void defineobject(int type, Point Position)
-        {
-            position = Position;
+        public void defineobject(int type){
             switch(type)
             {
             case 1:
                 // Basic rock 
                 image = rockShape;
-                r = 228;
-                g = 166;
-                b = 24;
+                int r = 228;
+                int g = 166;
+                int b = 24;
                 color = new Color(r, g, b);
-                fallingspeed = new Point(0, 10);
+                fallingspeed = 10;
                 score = -250;
                 multiplier = -1;
  
             break;
-            
-             case 2:
+
+            break;
+             case 2 :
              // tiny rock 
                 image = rockShape;
 
-                r = 208;
-                g = 146;
-                b = 4;
+                int r = 208;
+                int g = 146;
+                int b = 4;
                 color = new Color(r, g, b);
-                fallingspeed = new Point(0, 10);
+                fallingspeed = 10;
                 score = -100;
                 multiplier = -1;
             break;
@@ -68,11 +59,11 @@ namespace cse210_04.Game.Casting;
              // little rock 
                 image = rockShape;
 
-                r = 228;
-                g = 166;
-                b = 24;
+                int r = 228;
+                int g = 166;
+                int b = 24;
                 color = new Color(r, g, b);
-                fallingspeed = new Point(0, 10);
+                fallingspeed = 10;
                 score = -500;
                 multiplier = -1;
             break;
@@ -80,23 +71,23 @@ namespace cse210_04.Game.Casting;
              case 4:
                 // big rock 
                 image = rockShape;
-                r = 228;
-                g = 166;
-                b = 24;
+                int r = 228;
+                int g = 166;
+                int b = 24;
                 color = new Color(r, g, b);
-                fallingspeed = new Point(0, 10);
+                fallingspeed = 10;
                 score = -1000;
                 multiplier = -1;
  
             break;
-             case 5:
+             case 4:
                 // biggest rock 
                 image = rockShape;
-                r = 255;
-                g = 255;
-                b = 150;
+                int r = 255;
+                int g = 255;
+                int b = 150;
                 color = new Color(r, g, b);
-                fallingspeed = new Point(0, 10);
+                fallingspeed = 10;
                 score = -10000;
                 multiplier = -1;
  
@@ -106,11 +97,11 @@ namespace cse210_04.Game.Casting;
                 // gem basic
                 image = gemShape;
 
-                r = 68;
-                g = 197;
-                b = 236;
+                int r = 68;
+                int g = 197;
+                int b = 236;
                 color = new Color(r, g, b);
-                fallingspeed = new Point(0, 2);
+                fallingspeed = 2;
                 score = 100;
                 multiplier = 0;
                 
@@ -119,11 +110,11 @@ namespace cse210_04.Game.Casting;
                 // gem mid
                 image = gemShape;
 
-                r = 200;
-                g = 0;
-                b = 236;
+                int r = 200;
+                int g = 0;
+                int b = 236;
                 color = new Color(r, g, b);
-                fallingspeed = new Point(0, 3);
+                fallingspeed = 3;
                 score = 500;
                 multiplier = 0;
                 
@@ -132,11 +123,11 @@ namespace cse210_04.Game.Casting;
                 // gem high
                 image = gemShape;
 
-                r = 200;
-                g = 0;
-                b = 0;
+                int r = 200;
+                int g = 0;
+                int b = 0;
                 color = new Color(r, g, b);
-                fallingspeed = new Point(0, 5);
+                fallingspeed = 5;
                 score = 1000;
                 multiplier = 0;
                 
@@ -145,11 +136,11 @@ namespace cse210_04.Game.Casting;
                 // gem low
                 image = gemShape;
 
-                r = 68;
-                g = 197;
-                b = 236;
+                int r = 68;
+                int g = 197;
+                int b = 236;
                 color = new Color(r, g, b);
-                fallingspeed = new Point(0, 1);
+                fallingspeed = 1;
                 score = 50;
                 multiplier = 0;
                 
@@ -159,11 +150,11 @@ namespace cse210_04.Game.Casting;
              // multiplier Gem
                 image = multiplierGemShape;
 
-                r = 100;
-                g = 255;
-                b = 100;
+                int r = 100;
+                int g = 255;
+                int b = 100;
                 color = new Color(r, g, b);
-                fallingspeed = new Point(0, 10);
+                fallingspeed = 10;
                 score = 100;
                 multiplier = 1;
             break;
@@ -173,19 +164,16 @@ namespace cse210_04.Game.Casting;
         }
         private void createobject()
         {
-                int FONT_SIZE = 3;
 
                 FallingObject fallingObject = new FallingObject(); // <-- INSTANCE OF FALLING OBJECT
-                fallingObject.SetText(image); // <-- DEPENDING ON THE OBJECT
+                fallingObject.SetText(text); // <-- DEPENDING ON THE OBJECT
                 fallingObject.SetFontSize(FONT_SIZE);
                 fallingObject.SetColor(color);
                 fallingObject.SetPosition(position);
                 fallingObject.setMultiplier(multiplier);
                 fallingObject.setPointValue(score);
                 fallingObject.SetVelocity(fallingspeed);
-                // cannot access the instance of cast that director created
                 cast.AddActor("fallingObjects", fallingObject);
         }
-    }       
-}
+        }
     
