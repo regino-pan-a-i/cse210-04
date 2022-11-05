@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using cse210_04.Game.Casting;
 using cse210_04.Game.Services;
 
-
 namespace cse210_04.Game.Directing
 {
     /// <summary>
@@ -15,7 +14,6 @@ namespace cse210_04.Game.Directing
     {
         private KeyboardService _keyboardService = null;
         private VideoService _videoService = null;
-        private ObjectFactory _objectFactory = null;
 
         private static int COLS = 60;
 
@@ -26,11 +24,11 @@ namespace cse210_04.Game.Directing
         /// </summary>
         /// <param name="keyboardService">The given KeyboardService.</param>
         /// <param name="videoService">The given VideoService.</param>
-        public Director(KeyboardService keyboardService, VideoService videoService, ObjectFactory objectFactory)
+        public Director(KeyboardService keyboardService, VideoService videoService)
         {
             this._keyboardService = keyboardService;
             this._videoService = videoService;
-            this._objectFactory = objectFactory;
+            ObjectFactory _objectFactory = new ObjectFactory();
         }
 
         /// <summary>
@@ -56,10 +54,7 @@ namespace cse210_04.Game.Directing
         private void GetInputs(Cast cast) // Dillon's job
         {
             Actor minecart = cast.GetFirstActor("minecart");
-            foreach(Actor actor in Fallingobjects){
-                Point setActorVel = _keyboardService.MoveArtifact();
-            }
-
+       
 
             Point velocity = _keyboardService.GetDirection();
             minecart.SetVelocity(velocity);     
@@ -79,21 +74,26 @@ namespace cse210_04.Game.Directing
             Actor minecart = cast.GetFirstActor("minecart");
             List<Actor> fallingobjects = cast.GetActors("fallingObjects");
 
-            banner.SetText("");
             int maxX = _videoService.GetWidth();
             int maxY = _videoService.GetHeight();
             minecart.MoveNext(maxX, maxY);
+            // foreach(Actor actor in Fallingobjects){
+            // Point setActorVel = _keyboardService.MoveArtifact();
+            // }
 
-            foreach (Actor actor in fallingobjects)
+            // Needs a way to make fallingobjects fall
+
+            foreach (FallingObject actor in fallingobjects)
             {
                 if (minecart.GetPosition().Equals(actor.GetPosition()))
                 {
                     /// If player is in object position then 
                     /// call on Score Tracker UpdateScore()
-                    scoretracker.UpdateMultiplier();
-                    scoretracker.UpdateScore();
+                    scoretracker.UpdateMultiplier(actor.getMultiplier());
+                    scoretracker.UpdateScore(actor.getPointValue());
+
                     string multiplierMessage = $"Multiplier: {scoretracker.GetMultiplier()}x";
-                    multiplierBanner.SetText(multiplerMessage);
+                    multiplierBanner.SetText(multiplierMessage);
                     string scoreMessage = $"Score: {scoretracker.GetScore()}";
                     scoreBanner.SetText(scoreMessage);
                     cast.RemoveActor("fallingObjects", actor);
@@ -124,14 +124,16 @@ namespace cse210_04.Game.Directing
             List<int> xList = new List<int>();
             for(int i = 0; i < 3; i++)
             {
-                int x = random.Next(1, COLS).Except(xList);
+                // no access to the random library
+                int x = Random.Next(1, COLS).Except(xList);
                 if (!xList.Contains(x))
                 {
-                    int y = _videoService.GetHeight;
+                    int y = _videoService.GetHeight();
                     Point position = new Point(x, y);
-                    position = position.Scale(_videoService.GetCellSize);
-                    int objectType = random.Next(1, 10);
-                    _objectFactory.defineobject(objectType);
+                    position = position.Scale(_videoService.GetCellSize());
+                // no access to the random library
+                    int objectType = Random.Next(1, 10);
+                    _objectFactory.defineobject(objectType,position);
                     xList.Add(x);
                 }
             }  
