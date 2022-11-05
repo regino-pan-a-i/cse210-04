@@ -71,20 +71,20 @@ namespace cse210_04.Game.Directing
         /// <param name="cast">The given cast.</param>
         private void DoUpdates(Cast cast) // Emma and Andre
         {
-            spawn_falling_objects();
+            spawnFallingObjects();
             ScoreTracker scoretracker = (ScoreTracker)cast.GetFirstActor("banner");
             Actor scoreBanner = cast.GetFirstActor("banner");
             Actor multiplierBanner = cast.GetFirstActor("banner");
 
             Actor minecart = cast.GetFirstActor("minecart");
-            List<Actor> artifacts = cast.GetActors("artifacts");
+            List<Actor> fallingobjects = cast.GetActors("fallingObjects");
 
             banner.SetText("");
             int maxX = _videoService.GetWidth();
             int maxY = _videoService.GetHeight();
             minecart.MoveNext(maxX, maxY);
 
-            foreach (Actor actor in artifacts)
+            foreach (Actor actor in fallingobjects)
             {
                 if (minecart.GetPosition().Equals(actor.GetPosition()))
                 {
@@ -93,10 +93,14 @@ namespace cse210_04.Game.Directing
                     scoretracker.UpdateMultiplier();
                     scoretracker.UpdateScore();
                     string multiplierMessage = $"Multiplier: {scoretracker.GetMultiplier()}x";
-                    banner.SetText(multiplerMessage);
+                    multiplierBanner.SetText(multiplerMessage);
                     string scoreMessage = $"Score: {scoretracker.GetScore()}";
-                    banner.SetText(scoreMessage);
-
+                    scoreBanner.SetText(scoreMessage);
+                    cast.RemoveActor("fallingObjects", actor);
+                }
+                if (actor.GetPosition().GetY().Equals(0))
+                {
+                    cast.RemoveActor("fallingObjects", actor);
                 }
             } 
         }
@@ -115,13 +119,13 @@ namespace cse210_04.Game.Directing
             _videoService.FlushBuffer();
         }
 
-        private void spawn_falling_objects()
+        private void spawnFallingObjects()
         {
             List<int> xList = new List<int>();
             for(int i = 0; i < 3; i++)
             {
-                int x = random.Next(1, COLS);
-                // if x is not in xList
+                int x = random.Next(1, COLS).Except(xList);
+                if (!xList.Contains(x))
                 {
                     int y = _videoService.GetHeight;
                     Point position = new Point(x, y);
@@ -130,12 +134,7 @@ namespace cse210_04.Game.Directing
                     _objectFactory.defineobject(objectType);
                     xList.Add(x);
                 }
-
-                
-            }
-
+            }  
         }
-
-
     }
 }

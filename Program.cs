@@ -18,7 +18,7 @@ namespace cse210_04
         private static int MAX_X = 900;
         private static int MAX_Y = 600;
         private static int CELL_SIZE = 15;
-        private static int FONT_SIZE = 15;
+        private static int FONT_SIZE = 3;
         private static int COLS = 60;
         private static int ROWS = 40;
         private static string CAPTION = "Greed";
