@@ -8,7 +8,7 @@ using System;
 
 namespace cse210_04.Game.Casting;
     
-    public class fallingObject : Actor {
+    public class FallingObject : Actor {
         private int multiplier;
         private int score;
         
@@ -18,19 +18,29 @@ namespace cse210_04.Game.Casting;
         // private int gem_values =  random.Next(positive_values);
         // private int rock_values = random.Next(negative_values);
 
-        public int getPoint(){
-            return value;
-        }
+        // public int getPoint(){
+        //     return value;
+        // }
 
-        }
+        
 
         //
-        public setPointValue(int pointValue){
+        public void setPointValue(int pointValue)
+        {
             score = pointValue;
         }
-        public setMultiplier(int Multiplier)
+        public void setMultiplier(int Multiplier)
         {
-            multiplier = M0ultiplier;
+            multiplier = Multiplier;
         }
+        public int getPointValue()
+        {
+            return score;
+        }
+        public int getMultiplier()
+        {
+            return multiplier;
+        }
+    }
         
     
