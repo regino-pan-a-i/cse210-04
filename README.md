@@ -39,4 +39,3 @@ The project files and folders are organized as follows:
 * Nathan Marble
 * Justin Paystrup
 * Madison Brown
-
