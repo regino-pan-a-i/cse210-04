@@ -36,7 +36,7 @@ namespace cse210_04
 
             // create the score tracker
             ScoreTracker scoretracker = new ScoreTracker();
-            scoretracker.SetText("");
+            scoretracker.SetText("jgfjgfjgf");
             scoretracker.SetFontSize(FONT_SIZE);
             scoretracker.SetColor(WHITE);
             scoretracker.SetPosition(new Point(CELL_SIZE,0));
@@ -44,7 +44,7 @@ namespace cse210_04
 
             // create the score banner
             Actor scoreBanner = new Actor();
-            scoreBanner.SetText("");
+            scoreBanner.SetText("fdsgfsgfdhfgd");
             scoreBanner.SetFontSize(FONT_SIZE);
             scoreBanner.SetColor(WHITE);
             scoreBanner.SetPosition(new Point(CELL_SIZE,0));

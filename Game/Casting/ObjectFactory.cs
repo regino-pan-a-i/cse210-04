@@ -175,15 +175,17 @@ namespace cse210_04.Game.Casting;
                 int FONT_SIZE = 3;
 
                 FallingObject fallingObject = new FallingObject(); // <-- INSTANCE OF FALLING OBJECT
-                fallingObject.SetText(image); // <-- DEPENDING ON THE OBJECT
-                fallingObject.SetFontSize(FONT_SIZE);
+                fallingObject.SetText("g"); // <-- DEPENDING ON THE OBJECT
+                fallingObject.SetFontSize(20);
                 fallingObject.SetColor(color);
                 fallingObject.SetPosition(position);
+                fallingObject.SetPosition(new Point (200, 200));
                 fallingObject.setMultiplier(multiplier);
                 fallingObject.setPointValue(score);
                 fallingObject.SetVelocity(fallingspeed);
                 // cannot access the instance of cast that director created
                 cast.AddActor("fallingObjects", fallingObject);
+
         }
     }       
 
